@@ -4,3 +4,5 @@ The League of Volunteers - is the organization whose aim is to unite sympathizer
 Instruction for usage:
 1) You need to have any Mac device with the launched XCode on that
 2) All links to the server were hidden, so in order to see the full functionality of an application, you either link the project with your own ID and Server or just use the code as a reference for your own solutions
+
+You may also download it officailly from the App Store: https://itunes.apple.com/us/app/leaguevolunteers/id1424919016?mt=8
