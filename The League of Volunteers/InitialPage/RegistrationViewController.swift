@@ -86,7 +86,6 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func changeThePhotoButtonPressed(_ sender: UIButton)
     {
-        print("worked")
         addImage()
         choosePhotoAfterTapping()
     }
@@ -135,6 +134,7 @@ class RegistrationViewController: UIViewController {
                     let foreign = PFObject(className: "Foreign")
                     foreign["foreign"] = "0"
                     foreign["username"] = self.registrationInstance.usernameOfUser
+                    foreign["rank"] = "CC"
                     foreign.saveEventually()
                     
                     let avaOfUser = UIImageJPEGRepresentation(self.registrationInstance.avaOfUser, 0.5)
@@ -148,6 +148,9 @@ class RegistrationViewController: UIViewController {
                             UserDefaults.standard.synchronize()
                             let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
                             appDelegate.login()
+                            
+//                            let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "MainNewsViewController") as! MainNewsViewController
+//                            self.present(vc, animated: true, completion: nil)
                             
                             self.dismiss(animated: true, completion: nil)
                         }

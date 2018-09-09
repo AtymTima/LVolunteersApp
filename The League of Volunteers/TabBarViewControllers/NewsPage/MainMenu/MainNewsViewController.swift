@@ -21,6 +21,7 @@ class MainNewsViewController: UIViewController {
     var imagesForPost: [String] = []
     var avaForPost: String = ""
     var descriptionForPost: [String] = []
+    var isUserEnteredTheFirstTime = false
     
     @IBOutlet weak var collectionViewFourPages: UICollectionView!
     
@@ -40,6 +41,14 @@ class MainNewsViewController: UIViewController {
         avaQuery.getDataInBackground { (data, error) -> Void in
             self.usersAva.image = UIImage(data: data!)
         }
+        isUserEnteredTheFirstTime = false
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destinationVC = segue.destination as? GuideFirstViewController
+//        {
+//            destinationVC.isUserEnteredTheFirstTime = isUserEnteredTheFirstTime
+//        }
+//    }
 
     override func didReceiveMemoryWarning() {super.didReceiveMemoryWarning()}}

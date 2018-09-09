@@ -27,6 +27,9 @@ class GuestViewController: UIViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        upgradeUser.isEnabled = false
+        upgradeUser.isHidden = true
+        
         self.collectionViewWithAllPosts?.alwaysBounceVertical = true
         avaOfTheUser.layer.cornerRadius = avaOfTheUser.frame.width / 2
         avaOfTheUser.layer.masksToBounds = true
@@ -38,6 +41,7 @@ class GuestViewController: UIViewController {
 
         loadMainInfoOfGuestUser()
         loadPosts()
+        checkTheRole()
         
         if self.tabBarController?.tabBar.isHidden == false
         {
@@ -50,6 +54,25 @@ class GuestViewController: UIViewController {
             swipeBack()
         }
         
+    }
+    
+    func checkTheRole()
+    {
+        let query = PFQuery(className: "_User")
+        query.whereKey("username", equalTo: PFUser.current()!.username!)
+        query.findObjectsInBackground (block: { (objects, error) -> Void in
+            if error == nil
+            {
+                for object in objects!
+                {
+                    if object.value(forKey: "role") as! String == "admin"
+                    {
+                        self.upgradeUser.isHidden = false
+                        self.upgradeUser.isEnabled = true
+                    }
+                }
+            }
+        })
     }
     
     func loadMainInfoOfGuestUser()
@@ -72,7 +95,19 @@ class GuestViewController: UIViewController {
                         avaQuery?.getDataInBackground { (data, error) -> Void in
                             self.avaOfTheUser.image = UIImage(data: data!)
                         }
-                        self.ownRank.text = object.value(forKey: "rank") as? String
+                        
+                        let foreignQuery = PFQuery(className: "Foreign")
+                        foreignQuery.whereKey("username", equalTo: guestName.last!)
+                        foreignQuery.findObjectsInBackground { (objs, error) -> Void in
+                            if error == nil
+                            {
+                                for obj in objs!
+                                {
+                                    let rank = obj["rank"] as! String
+                                    self.ownRank.text = rank
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -120,7 +155,74 @@ class GuestViewController: UIViewController {
         }
     }
     
-
+    @IBOutlet weak var upgradeUser: UIButton!
+    @IBAction func upgradeUserButtonPressed(_ sender: UIButton)
+    {
+        let alert = UIAlertController(title: "Вы уверены?", message: "Подтвердив это действие, данный пользователь мгновенно повысит свой ранк", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Согласен", style: .destructive, handler: {(action:UIAlertAction!) in
+            self.checkCurrentRank()
+        }))
+        alert.addAction(UIAlertAction(title: "Отмена", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+    func checkCurrentRank()
+    {
+        let query = PFQuery(className: "Foreign")
+        query.whereKey("username", equalTo: guestName.last!)
+        query.findObjectsInBackground (block: { (objects, error) -> Void in
+            if error == nil
+            {
+                for object in objects!
+                {
+                    if object.value(forKey: "rank") as! String == "CC"
+                    {
+                        object["rank"] = "CB"
+                        self.ownRank.text = "CB"
+                    }
+                    else if object.value(forKey: "rank") as! String == "CB"
+                    {
+                        object["rank"] = "CA"
+                        self.ownRank.text = "CA"
+                    }
+                    else if object.value(forKey: "rank") as! String == "CA"
+                    {
+                        object["rank"] = "BC"
+                        self.ownRank.text = "BC"
+                    }
+                    else if object.value(forKey: "rank") as! String == "BC"
+                    {
+                        object["rank"] = "BB"
+                        self.ownRank.text = "BB"
+                    }
+                    else if object.value(forKey: "rank") as! String == "BB"
+                    {
+                        object["rank"] = "BA"
+                        self.ownRank.text = "BA"
+                    }
+                    else if object.value(forKey: "rank") as! String == "BA"
+                    {
+                        object["rank"] = "AC"
+                        self.ownRank.text = "AC"
+                    }
+                    else if object.value(forKey: "rank") as! String == "AC"
+                    {
+                        object["rank"] = "AB"
+                        self.ownRank.text = "AB"
+                    }
+                    else if object.value(forKey: "rank") as! String == "AB"
+                    {
+                        object["rank"] = "AA"
+                        self.ownRank.text = "AA"
+                    }
+                    object.saveEventually()
+                }
+            }
+        })
+    }
+    
+    
     override func didReceiveMemoryWarning() {super.didReceiveMemoryWarning()}}
 
 extension GuestViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout

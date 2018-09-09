@@ -44,7 +44,25 @@ class ViewController: UIViewController
         enterButtonPressed.setShadowForButton(corners: 8)
         
         hideKeyboardWhenTappedAround()
+        addParallaxToView(vw: imageBackgroundDynamic)
     }
+    
+    func addParallaxToView(vw: UIImageView) {
+        let amount = 100
+        
+        let horizontal = UIInterpolatingMotionEffect(keyPath: "center.x", type: .tiltAlongHorizontalAxis)
+        horizontal.minimumRelativeValue = -amount
+        horizontal.maximumRelativeValue = amount
+        
+        let vertical = UIInterpolatingMotionEffect(keyPath: "center.y", type: .tiltAlongVerticalAxis)
+        vertical.minimumRelativeValue = -amount
+        vertical.maximumRelativeValue = amount
+        
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [horizontal, vertical]
+        vw.addMotionEffect(group)
+    }
+    
     @IBAction func loginButtonPressed(_ sender: UIButton)
     {
         self.view.endEditing(true)
@@ -105,7 +123,6 @@ class ViewController: UIViewController
             actionHandler?(textField.text)
             let answer = alert.textFields![0]
             self.enteredMail = answer.text!
-            print(self.enteredMail)
             self.checkTheEnteredMail()
         }))
         alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: cancelHandler))

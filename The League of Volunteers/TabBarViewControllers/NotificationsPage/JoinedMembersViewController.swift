@@ -32,6 +32,7 @@ class JoinedMembersViewController: UIViewController {
     {
         let followQuery = PFQuery(className: "Members")
         followQuery.whereKey("to", equalTo: PFUser.current()!.username!)
+        followQuery.whereKey("isFinished", equalTo: "false")
         followQuery.addDescendingOrder("createdAt")
         followQuery.findObjectsInBackground (block: { (objects, error) -> Void in
             if error == nil

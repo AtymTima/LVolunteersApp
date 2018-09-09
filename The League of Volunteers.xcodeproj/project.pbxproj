@@ -37,6 +37,8 @@
 		220FEA9E211C24AA0060D898 /* followIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 220FEA9B211C24A80060D898 /* followIcon.png */; };
 		220FEAA0211C2C5B0060D898 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220FEA9F211C2C5B0060D898 /* SettingsViewController.swift */; };
 		220FFC2D21101E15006DFD06 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 220FFC2C21101E15006DFD06 /* Podfile */; };
+		2212C7C2212407DF003F38E3 /* GuideFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212C7C1212407DF003F38E3 /* GuideFirstViewController.swift */; };
+		2212C7C4212409B6003F38E3 /* GuideSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2212C7C3212409B6003F38E3 /* GuideSecondViewController.swift */; };
 		2213667F21186F3800C38D92 /* ActivitiesDetailedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2213667E21186F3800C38D92 /* ActivitiesDetailedTableViewCell.swift */; };
 		223C396B210858F4007C1D75 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C396A210858F4007C1D75 /* FAQViewController.swift */; };
 		223C396E21085FAC007C1D75 /* MainMenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223C396D21085FAC007C1D75 /* MainMenuCollectionViewCell.swift */; };
@@ -115,6 +117,8 @@
 		220FEA9B211C24A80060D898 /* followIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followIcon.png; sourceTree = "<group>"; };
 		220FEA9F211C2C5B0060D898 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		220FFC2C21101E15006DFD06 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2212C7C1212407DF003F38E3 /* GuideFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideFirstViewController.swift; sourceTree = "<group>"; };
+		2212C7C3212409B6003F38E3 /* GuideSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideSecondViewController.swift; sourceTree = "<group>"; };
 		2213667E21186F3800C38D92 /* ActivitiesDetailedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesDetailedTableViewCell.swift; sourceTree = "<group>"; };
 		223C396A210858F4007C1D75 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		223C396D21085FAC007C1D75 /* MainMenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +210,7 @@
 				22BA0D202105CDA2004BD5D4 /* MainNewsViewController.swift */,
 				223C396D21085FAC007C1D75 /* MainMenuCollectionViewCell.swift */,
 				22BA0D312106DB5F004BD5D4 /* NewsTapeViewController.swift */,
+				2212C7C0212405EB003F38E3 /* GuideForApp */,
 			);
 			path = MainMenu;
 			sourceTree = "<group>";
@@ -267,6 +272,15 @@
 				220FB8D2211B0397005DC2E3 /* GuestViewController.swift */,
 			);
 			path = Guest;
+			sourceTree = "<group>";
+		};
+		2212C7C0212405EB003F38E3 /* GuideForApp */ = {
+			isa = PBXGroup;
+			children = (
+				2212C7C1212407DF003F38E3 /* GuideFirstViewController.swift */,
+				2212C7C3212409B6003F38E3 /* GuideSecondViewController.swift */,
+			);
+			path = GuideForApp;
 			sourceTree = "<group>";
 		};
 		223C396C21085F7B007C1D75 /* TabBar */ = {
@@ -621,12 +635,14 @@
 				22BA0D292105E022004BD5D4 /* ActivitiesViewController.swift in Sources */,
 				220FB0882111A1180013C977 /* NotificationsTableViewCell.swift in Sources */,
 				22AE63A4210821B600A07D5E /* AboutLeagueViewController.swift in Sources */,
+				2212C7C2212407DF003F38E3 /* GuideFirstViewController.swift in Sources */,
 				220FB8CE211AD69C005DC2E3 /* JoinedMembersViewController.swift in Sources */,
 				2213667F21186F3800C38D92 /* ActivitiesDetailedTableViewCell.swift in Sources */,
 				220FB8D3211B0397005DC2E3 /* GuestViewController.swift in Sources */,
 				22D60B992101DD6C006EF61B /* ViewController.swift in Sources */,
 				220FB08E2111CE390013C977 /* ActivitiesAllTableViewCell.swift in Sources */,
 				220FAA462112F15A0080A67F /* RegistrationPreMediumTableViewCell.swift in Sources */,
+				2212C7C4212409B6003F38E3 /* GuideSecondViewController.swift in Sources */,
 				220FAA422112F0E30080A67F /* RegistrationMainInfoTableViewCell.swift in Sources */,
 				22831745210F18D50097C49B /* ActivitiesDetailedViewController.swift in Sources */,
 				220FAA442112F10F0080A67F /* RegistrationLanguagesTableViewCell.swift in Sources */,

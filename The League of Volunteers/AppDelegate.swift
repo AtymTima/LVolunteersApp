@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let parseConfig = ParseClientConfiguration { (ParseMutableConfiguration) in
-            ParseMutableConfiguration.applicationId = "ID_LINK"
-            ParseMutableConfiguration.clientKey = "CLIENT_LINK"
-            ParseMutableConfiguration.server = "SERVER_IP"
+            ParseMutableConfiguration.applicationId = "2JzA9Nbl4nkXN1NPj2eU05jqSmd4ozVHZb1wMbTT"
+            ParseMutableConfiguration.clientKey = "tCNNZhZICnpneAbcecZMS58iXoCUeNVWUzG317Ma"
+            ParseMutableConfiguration.server = "https://parseapi.back4app.com/"
         }
         Parse.initialize(with: parseConfig)
         PFUser.enableRevocableSessionInBackground()

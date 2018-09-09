@@ -204,14 +204,10 @@ class CreateViewController: UIViewController, UITextViewDelegate {
     @IBAction func locationButtonPressed(_ sender: Any)
     {
         showInputAlert(title: "Локация", subtitle: "Выберите месторасположение", actionTitle: "Добавить", cancelTitle: "Отменить", inputPlaceholder: "Место встречи", inputKeyboardType: .default, cancelHandler: nil, actionHandler: nil, buttonField: locationButton)
-        nameOfActivity.isEnabled = false
-        descriptionOfActivity.isUserInteractionEnabled = false
     }
     @IBAction func rewardButtonPressed(_ sender: Any)
     {
         showInputAlert(title: "Награда", subtitle: "Выберите вознаграждение", actionTitle: "Добавить", cancelTitle: "Отменить", inputPlaceholder: "Пример: рекомендательное письмо", inputKeyboardType: .default, cancelHandler: nil, actionHandler: nil, buttonField: rewardButton)
-        nameOfActivity.isEnabled = false
-        descriptionOfActivity.isUserInteractionEnabled = false
     }
     @IBAction func nameOfActivityEditingBegin(_ sender: UITextField)
     {

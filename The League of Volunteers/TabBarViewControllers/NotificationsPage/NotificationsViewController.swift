@@ -135,6 +135,7 @@ class NotificationsViewController: UIViewController {
                     self.activeOrNotText.isHidden = true
                     self.nameOfCurrentActivity.isHidden = false
                     self.addedActivitiesText.isHidden = false
+                    self.numberOfJoinedMembers()
                 }
             }
             self.showAllElements()
@@ -162,6 +163,24 @@ class NotificationsViewController: UIViewController {
             self.nameOfCurrentActivity.alpha = 1
             self.addedActivitiesText.alpha = 1
         }
+    }
+    
+    func numberOfJoinedMembers()
+    {
+        let postQuery = PFQuery(className: "Members")
+        postQuery.whereKey("to", equalTo: PFUser.current()!.username!)
+        postQuery.whereKey("isFinished", equalTo: "false")
+        postQuery.findObjectsInBackground (block: { (objects, error) -> Void in
+            var number = 0
+            if error == nil
+            {
+                for _ in objects!
+                {
+                    number += 1
+                }
+            }
+            self.numberOfMembers.text = "\(number)"
+        })
     }
     
     @IBAction func lookAllMembersOfActivityButtonPressed(_ sender: UIButton)

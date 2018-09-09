@@ -63,12 +63,16 @@ class ActivitiesViewController: UIViewController {
                 for object in objects!
                 {
                     self.usernames.append(object.object(forKey: "username") as! String)
+                    
                     self.ava.append(object.object(forKey: "ava") as! PFFile)
                     self.imagesOfActivity.append(object.object(forKey: "picture") as! PFFile)
                     self.whenCreated.append(object.createdAt)
                     self.descriptionsOfActivity.append(object.object(forKey: "title") as! String)
                     self.uuid.append(object.object(forKey: "uuid") as! String)
                     self.amount.append(object.object(forKey: "amount") as! Int)
+                    
+                    
+                    
                 }
                 self.tableViewFeed.reloadData()
                 self.refresher.endRefreshing()

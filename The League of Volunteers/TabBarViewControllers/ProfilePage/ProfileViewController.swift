@@ -39,10 +39,23 @@ class ProfileViewController: UIViewController {
         collectionViewWithAllPosts?.addSubview(refresher)
         NotificationCenter.default.addObserver(self, selector: #selector(ProfileViewController.reload(_:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
         loadPosts()
-        if self.tabBarController?.tabBar.isHidden == false{}
+        if self.tabBarController?.tabBar.isHidden == false
+        {
+            let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(self.back))
+            backSwipe.direction = UISwipeGestureRecognizerDirection.right
+            self.view.addGestureRecognizer(backSwipe)
+            
+        }
         else
         {
             swipeBack()
+        }
+    }
+    
+    @objc func back(_ sender : UIBarButtonItem) {
+        _ = self.navigationController?.popViewController(animated: true)
+        if !guestName.isEmpty {
+            guestName.removeLast()
         }
     }
     
@@ -53,7 +66,6 @@ class ProfileViewController: UIViewController {
         avaQuery.getDataInBackground { (data, error) -> Void in
             self.avaOfTheUser.image = UIImage(data: data!)
         }
-        ownRank.text = (PFUser.current()?.object(forKey: "rank") as? String)
         if PFUser.current()?.object(forKey: "bio") as? String == nil
         {
             descriptionOfTheUser.text = ""
@@ -71,6 +83,8 @@ class ProfileViewController: UIViewController {
                 {
                     let foreign = object["foreign"] as! String
                     self.foreignActivities.text = foreign
+                    let rank = object["rank"] as! String
+                    self.ownRank.text = rank
                 }
             }
         }

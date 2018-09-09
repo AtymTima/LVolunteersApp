@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The League of Volunteers/TabBarViewControllers/ProfilePage/ProfileViewController.swift"
-            timestampString = "555780234.893391"
+            timestampString = "555943721.034215"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The League of Volunteers/TabBarViewControllers/ProfilePage/ProfileViewController.swift"
-            timestampString = "555780234.89345"
+            timestampString = "555943721.034278"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "ProfileViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -218,11 +218,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The League of Volunteers/TabBarViewControllers/ActivitiesPage/ViewCells/ActivitiesDetailedTableViewCell.swift"
-            timestampString = "555540973.453679"
+            timestampString = "556021731.106231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The League of Volunteers/TabBarViewControllers/ActivitiesPage/ViewCells/ActivitiesDetailedTableViewCell.swift"
-            timestampString = "555540973.453768"
+            timestampString = "556021731.106294"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -250,13 +250,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The League of Volunteers/TabBarViewControllers/ActivitiesPage/ViewControllers/ActivitiesDetailedViewController.swift"
-            timestampString = "555540973.453859"
+            timestampString = "556021731.106343"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "findThePost()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -266,13 +266,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The League of Volunteers/TabBarViewControllers/ActivitiesPage/ViewControllers/ActivitiesDetailedViewController.swift"
-            timestampString = "555540973.4539191"
+            timestampString = "556021731.106724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "findThePost()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -282,13 +282,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The League of Volunteers/TabBarViewControllers/ActivitiesPage/ViewControllers/ActivitiesDetailedViewController.swift"
-            timestampString = "555540973.4539779"
+            timestampString = "556021731.106945"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
             endingLineNumber = "120"
-            landmarkName = "joinToActivityButtonPressed(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -298,7 +298,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "The League of Volunteers/TabBarViewControllers/ActivitiesPage/ViewCells/ActivitiesDetailedTableViewCell.swift"
-            timestampString = "555540973.4540859"
+            timestampString = "556021731.107157"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "66"

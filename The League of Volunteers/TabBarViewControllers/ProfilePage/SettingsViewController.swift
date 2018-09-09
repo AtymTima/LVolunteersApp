@@ -11,7 +11,7 @@ import Parse
 
 var stateOfChanges = 0
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var avaOfTheUser: UIImageView!
     @IBOutlet weak var descriptionOfTheUser: UITextView!
@@ -27,6 +27,9 @@ class SettingsViewController: UIViewController {
     
     var gradientLayer: CAGradientLayer!
     var profileInstance = ProfileViewController()
+    var isKeyboardAppear = false
+    var isTextEditable = false
+    var avaOfPosts = [PFFile]()
     
     @IBAction func changePhotoButtonTapped(_ sender: UIButton)
     {
@@ -46,6 +49,24 @@ class SettingsViewController: UIViewController {
         user["surname"] = surnameOfTheUser.text
         user["bio"] = descriptionOfTheUser.text
         
+        let postQuery = PFQuery(className: "Posts")
+        postQuery.whereKey("username", equalTo: user.username!)
+        postQuery.findObjectsInBackground (block: { (objects, error) -> Void in
+            if error == nil
+            {
+                for obj in objects!
+                {
+                    obj["ava"] = PFUser.current()!.value(forKey: "ava") as! PFFile
+                    obj.saveInBackground(block: { (success, error) -> Void in
+                        if error == nil
+                        {
+                            print("OK")
+                        }
+                    })
+                }
+            }
+        })
+        
         if phoneOfTheUser.text!.isEmpty {
             user["phone"] = ""
         } else {
@@ -55,6 +76,8 @@ class SettingsViewController: UIViewController {
         let avaData = UIImageJPEGRepresentation(avaOfTheUser.image!, 0.5)
         let avaFile = PFFile(name: "ava.jpg", data: avaData!)
         user["ava"] = avaFile
+        
+        
 
         user.saveInBackground (block: { (success, error) -> Void in
             if success{
@@ -66,6 +89,7 @@ class SettingsViewController: UIViewController {
                 self.showAlertMessge(title: "Ошибка", message: "\(error!.localizedDescription)", answer: "OK")
             }
         })
+        
     }
     
     func validateEmail (_ email : String) -> Bool {
@@ -90,6 +114,7 @@ class SettingsViewController: UIViewController {
         choosePhotoAfterTapping()
        
         self.scrollView.alwaysBounceVertical = true
+        descriptionOfTheUser.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -148,6 +173,54 @@ class SettingsViewController: UIViewController {
     @IBAction func backButtonPressed(_ sender: Any)
     {
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView)
+    {
+        isTextEditable = true
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        isTextEditable = false
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification)
+    {
+        if (usernameOfTheUser.isEditing == false) && isTextEditable == false
+        {
+            if !isKeyboardAppear
+            {
+                if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+                {
+                    if self.view.frame.origin.y == 0
+                    {
+                        self.view.frame.origin.y -= keyboardSize.height
+                    }
+                }
+                isKeyboardAppear = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification)
+    {
+        if isKeyboardAppear
+        {
+            if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y != 0
+                {
+                    self.view.frame.origin.y += keyboardSize.height
+                }
+            }
+            isKeyboardAppear = false
+        }
     }
     
     override func didReceiveMemoryWarning() {

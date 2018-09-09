@@ -64,6 +64,8 @@ extension ActivitiesDetailedViewController: UITableViewDelegate, UITableViewData
                 {
                     self.from.append(object.object(forKey: "from") as! String)
                     self.findMatchUser()
+                    object["isFinished"] = "true"
+                    object.saveEventually()
                 }
                 
             }
@@ -93,7 +95,8 @@ extension ActivitiesDetailedViewController: UITableViewDelegate, UITableViewData
             })
         
         self.showAlertMessge(title: "Дело завершено", message: "Все участники вознаграждены", answer: "ОК")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4, execute: {
+        self.findThePost()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             self.tableViewDetailed.reloadData()
         })
     }
